@@ -42,6 +42,9 @@ export const picturesSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
+        // builder.addCase(getPicturesAsync.pending, (state) => {
+        //     state.isLoading = true;
+        // });
         builder.addCase(getPicturesAsync.fulfilled, (state, action) => {
             // state.isLoading = false;
             return [...state, ...action.payload.pictures].reduce(
