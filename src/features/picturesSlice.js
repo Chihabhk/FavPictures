@@ -4,10 +4,13 @@ export const getPicturesAsync = createAsyncThunk(
     "pictures/getPicturesAsync",
     async ({ page }) => {
         try {
-            const baseURL = new URL("https://cataas.com/api/cats");
-            baseURL.searchParams.append("limit", 15);
-            const skip = (page - 1) * 15;
-            baseURL.searchParams.append("skip", skip);
+            const API_KEY = process.env.REACT_APP_API_KEY;
+            const baseURL = new URL(
+                "https://api.thecatapi.com/v1/images/search/"
+            );
+            baseURL.searchParams.append("api_key", API_KEY);
+            baseURL.searchParams.append("limit", 9);
+            baseURL.searchParams.append("has_breeds", 1);
             const res = await fetch(baseURL.toString());
             if (res.ok) {
                 const pictures = await res.json();
@@ -49,10 +52,10 @@ export const picturesSlice = createSlice({
             // state.isLoading = false;
             return [...state, ...action.payload.pictures].reduce(
                 (uniquePicArray, pic) => {
-                    const currentId = pic._id;
+                    const currentId = pic.id;
                     if (
                         currentId &&
-                        !uniquePicArray.find((pic) => pic._id === currentId)
+                        !uniquePicArray.find((pic) => pic.id === currentId)
                     ) {
                         uniquePicArray.push(pic);
                     }

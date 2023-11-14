@@ -22,7 +22,7 @@ export const CatContainer = ()=>{
         <div className="main">
             <ul className="fotos-container">
                 {pictures && pictures.map((pic) => {
-                    return (<CatCard pic={pic} key={pic._id} />);
+                    return (<CatCard pic={pic} key={pic.id} />);
                 })}
             </ul>
             <button
