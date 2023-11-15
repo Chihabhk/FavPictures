@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import picturesReducer from "../features/picturesSlice";
+import { catsSlice } from "../features/catsSlice";
 
-const store = configureStore({
-    reducer: { picture: picturesReducer },
+export const store = configureStore({
+    reducer: {
+        cats: catsSlice.reducer,
+    },
 });
-
-export { store };

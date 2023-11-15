@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { ColorRing } from 'react-loader-spinner'
 import { useDispatch } from 'react-redux';
-import { addPicture } from '../features/picturesSlice';
+import { addPicture } from '../features/catsSlice';
 
 export const CatCard = ({ pic }) => {
     const [loaded, setLoaded] = useState(false);

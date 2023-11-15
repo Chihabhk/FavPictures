@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import CatCard from './CatCard';
 
 const FavoritePictures = () => {
-    const favorites = useSelector((state) => state.pictures.favorites);
+    const favorites = useSelector((state) => state.cats.favorites);
 
     return (
         <div>

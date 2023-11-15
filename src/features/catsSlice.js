@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getPicturesAsync = createAsyncThunk(
-    "pictures/getPicturesAsync",
+    "cats/getPicturesAsync",
     async ({ page }) => {
         try {
             const API_KEY = process.env.REACT_APP_API_KEY;
@@ -19,8 +19,8 @@ export const getPicturesAsync = createAsyncThunk(
             baseURL.search = params.toString();
             const res = await fetch(baseURL.toString(), { headers });
             if (res.ok) {
-                const pictures = await res.json();
-                return { pictures };
+                const images = await res.json();
+                return { images };
             }
         } catch (err) {
             console.log("error: " + err);
@@ -28,10 +28,10 @@ export const getPicturesAsync = createAsyncThunk(
     }
 );
 
-export const fotosSlice = createSlice({
-    name: "fotos",
+export const catsSlice = createSlice({
+    name: "cats",
     initialState: {
-        pictures: [],
+        images: [],
         favorites: [],
         isLoading: false,
     },
@@ -51,23 +51,23 @@ export const fotosSlice = createSlice({
         });
         builder.addCase(getPicturesAsync.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.pictures = [
-                ...state.pictures,
-                ...action.payload.pictures,
-            ].reduce((uniquePicArray, pic) => {
-                const currentId = pic.id;
-                if (
-                    currentId &&
-                    !uniquePicArray.find((pic) => pic.id === currentId)
-                ) {
-                    uniquePicArray.push(pic);
-                }
-                return uniquePicArray;
-            }, []);
+            state.images = [...state.images, ...action.payload.images].reduce(
+                (uniquePicArray, pic) => {
+                    const currentId = pic.id;
+                    if (
+                        currentId &&
+                        !uniquePicArray.find((pic) => pic.id === currentId)
+                    ) {
+                        uniquePicArray.push(pic);
+                    }
+                    return uniquePicArray;
+                },
+                []
+            );
         });
     },
 });
 
-export const { addPicture, deletePicture } = fotosSlice.actions;
+export const { addPicture, deletePicture } = catsSlice.actions;
 
-export default fotosSlice.reducer;
+export default catsSlice.reducer;

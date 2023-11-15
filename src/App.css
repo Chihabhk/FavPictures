@@ -3,13 +3,20 @@
     padding: 0;
 }
 body {
-    height: 100%;
     background: linear-gradient(
         0deg,
         hsla(339, 100%, 55%, 1) 0%,
         hsla(187, 100%, 6%, 1) 100%
     );
 }
+
+body > div#root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
 header {
     padding: 0.7rem;
     text-align: center;
@@ -32,12 +39,18 @@ div.main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     padding: 1rem;
+    flex: 1;
+}
+
+div.main > div.loading {
+    display: flex;
 }
 
 ul.fotos-container {
     width: 100%;
+    justify-content: space-around;
     margin: 0;
     display: grid;
     grid-template-columns: 3fr 3fr 3fr;
