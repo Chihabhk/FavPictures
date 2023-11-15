@@ -6,9 +6,9 @@ import { useState } from "react";
 
 export const CatContainer = ()=>{ 
     const dispatch = useDispatch();
-    const pictures = useSelector((state) => state.picture);
+    const pictures = useSelector((state) => state.picture.pictures);
     // const isLoading = pictures.isLoading
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(0)
 
     
     useEffect(() => {

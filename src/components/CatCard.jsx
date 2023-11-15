@@ -1,10 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { ColorRing } from 'react-loader-spinner'
-
+import { useDispatch } from 'react-redux';
+import { addPicture } from '../features/picturesSlice';
 
 export const CatCard = ({ pic }) => {
     const [loaded, setLoaded] = useState(false);
+    const dispatch = useDispatch();
+
+    const handleAddToFavorites = () => {
+        dispatch(addPicture(pic));
+    };
 
     const handleLoaded = () => {
         setLoaded(true);
@@ -16,7 +22,7 @@ export const CatCard = ({ pic }) => {
     }
 
     return (
-        <li>
+        <li className="card" onClick={handleAddToFavorites}>
             <img 
                 src={pic.url} 
                 alt={pic.tags ? pic.tags.join(", ") : 'Cat image'} 
