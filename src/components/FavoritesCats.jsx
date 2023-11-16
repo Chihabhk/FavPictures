@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import CatCard from './CatCard';
+import {CatCard} from './CatCard';
 
-const FavoritePictures = () => {
+export const FavoritesCats = () => {
     const favorites = useSelector((state) => state.cats.favorites);
 
     return (
-        <div>
+        <div className='favorites'>
             {favorites.map((picture) => (
                 <CatCard key={picture.id} picture={picture} />
             ))}
@@ -14,4 +14,3 @@ const FavoritePictures = () => {
     );
 };
 
-export default FavoritePictures;

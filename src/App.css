@@ -27,12 +27,33 @@ header {
     z-index: 999;
     background-color: #001d21;
 }
-
-h1 {
+header > h1 {
     color: white;
 }
-p {
+header > p {
     color: white;
+}
+header > span.icon {
+    top: 30%;
+    right: 11%;
+    transform: translate(-50%, -50%);
+    scale: 1.5;
+    color: coral;
+    display: flex;
+    position: absolute;
+}
+header > span.icon > span {
+    position: absolute;
+}
+header > span.icon span:nth-child(1) {
+    transform: rotate(32deg) translate(4px, 0);
+}
+header > span.icon span:nth-child(2) {
+    transform: rotate(0deg);
+}
+
+header > span.icon span:nth-child(3) {
+    transform: rotate(-32deg) translate(-4px, 0);
 }
 div.main {
     position: relative;
@@ -46,6 +67,15 @@ div.main {
 
 div.main > div.loading {
     display: flex;
+}
+
+div.main > div.favorites {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    flex: 1;
 }
 
 ul.fotos-container {
@@ -76,6 +106,7 @@ ul.fotos-container > li > img {
 ul.fotos-container > li > img:hover {
     transform: scale(1.05);
 }
+
 button {
     bottom: 0;
     margin-top: 0.7rem;
