@@ -32,7 +32,7 @@ export const CatCard = ({ pic }) => {
                 onLoad={handleLoaded} 
                 style={{ display: loaded ? 'block' : 'none' }} 
             />
-            <span className={`favorites-heart ${favorite ? 'active' : ''}`} onClick={handleAddToFavorites}>{favorite? <MdFavorite /> : <MdFavoriteBorder/>}</span>
+            <span className={`favorites-heart ${favorite ? 'active' : ''}`} onClick={handleAddToFavorites}>{favorite? <MdFavorite style={{ height: '1.2rem', width: '1.2rem' }} /> : <MdFavoriteBorder style={{ height: '1.2rem', width: '1.2rem' }}/>}</span>
             {!loaded && 
             <ColorRing
             visible={true}

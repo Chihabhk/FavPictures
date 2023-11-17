@@ -4,11 +4,19 @@
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(0deg, hsl(339, 100%, 55%) 0%, hsl(187, 100%, 6%) 100%);
 }
-body header {
+body div#root {
+  height: 100%;
+}
+body div#root header {
   padding: 0.7rem;
   position: sticky;
   top: 0;
@@ -19,20 +27,20 @@ body header {
   justify-content: space-around;
   align-items: center;
 }
-body header > div.logo {
+body div#root header > div.logo {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-body header > div.logo > h1 {
+body div#root header > div.logo > h1 {
   color: white;
 }
-body header > div.logo > p {
+body div#root header > div.logo > p {
   color: white;
   font-size: 0.8rem;
 }
-body header > div.favorites-icon {
+body div#root header > div.favorites-icon {
   scale: 1.5;
   color: #d71a5e;
   align-self: center;
@@ -42,21 +50,21 @@ body header > div.favorites-icon {
   justify-content: center;
   cursor: pointer;
 }
-body header > div.favorites-icon > span:nth-child(1) {
+body div#root header > div.favorites-icon > span:nth-child(1) {
   transform: rotate(-32deg) translate(10px, 9px);
 }
-body header > div.favorites-icon > span:nth-child(2) {
+body div#root header > div.favorites-icon > span:nth-child(2) {
   transform: rotate(0deg) translate(0px, 1.9px);
 }
-body header > div.favorites-icon > span:nth-child(3) {
+body div#root header > div.favorites-icon > span:nth-child(3) {
   transform: rotate(32deg) translate(-10px, 9px);
 }
-body header > div.favorites-icon > span.favorites-label {
+body div#root header > div.favorites-icon > span.favorites-label {
   position: absolute;
   top: 15px;
   font-size: x-small;
 }
-body div.main {
+body div#root > div.main {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -65,10 +73,10 @@ body div.main {
   padding: 1rem;
   flex: 1;
 }
-body div.main > div.loading {
+body div#root > div.main > div.loading {
   display: flex;
 }
-body div.main > div.favorites {
+body div#root > div.main > div.favorites {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,13 +84,13 @@ body div.main > div.favorites {
   padding: 1rem;
   flex: 1;
 }
-body div.main ul.fotos-container {
+body div#root > div.main ul.fotos-container {
   display: grid;
   grid-template-columns: 3fr 3fr 3fr;
   grid-gap: 1rem;
   list-style: none;
 }
-body div.main ul.fotos-container > li.card {
+body div#root > div.main ul.fotos-container > li.card {
   width: 100%;
   height: 18vmax;
   position: relative;
@@ -90,7 +98,7 @@ body div.main ul.fotos-container > li.card {
   transition: all 300ms ease;
   cursor: pointer;
 }
-body div.main ul.fotos-container > li.card::after {
+body div#root > div.main ul.fotos-container > li.card::after {
   content: "";
   border-radius: 0.8rem;
   position: absolute;
@@ -102,14 +110,14 @@ body div.main ul.fotos-container > li.card::after {
   z-index: 1;
   transition: all 0.3s ease-out;
 }
-body div.main ul.fotos-container > li.card:hover {
+body div#root > div.main ul.fotos-container > li.card:hover {
   transform: scale(1.05);
 }
-body div.main ul.fotos-container > li.card:hover::after {
+body div#root > div.main ul.fotos-container > li.card:hover::after {
   width: 40%;
-  height: 40%;
+  height: 45%;
 }
-body div.main ul.fotos-container > li.card > img {
+body div#root > div.main ul.fotos-container > li.card > img {
   border-radius: 0.8rem;
   width: 100%;
   height: 100%;
@@ -117,7 +125,7 @@ body div.main ul.fotos-container > li.card > img {
   object-position: center;
   z-index: 0;
 }
-body div.main ul.fotos-container > li.card > span.favorites-heart {
+body div#root > div.main ul.fotos-container > li.card > span.favorites-heart {
   position: absolute;
   bottom: 0rem;
   right: 0.5rem;
@@ -128,13 +136,13 @@ body div.main ul.fotos-container > li.card > span.favorites-heart {
   z-index: 2;
   opacity: 0;
 }
-body div.main ul.fotos-container > li.card > span.favorites-heart.active {
+body div#root > div.main ul.fotos-container > li.card > span.favorites-heart.active {
   opacity: 1;
 }
-body div.main ul.fotos-container > li.card:hover > span.favorites-heart {
+body div#root > div.main ul.fotos-container > li.card:hover > span.favorites-heart {
   opacity: 1;
 }
-body div.main > button {
+body div#root > div.main > button {
   bottom: 0;
   margin-top: 0.7rem;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -152,7 +160,7 @@ body div.main > button {
   padding: 0.7rem 2.5rem;
   transition: all 300ms ease;
 }
-body div.main > button:hover {
+body div#root > div.main > button:hover {
   opacity: 1;
   scale: 1.1;
 }
