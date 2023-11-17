@@ -1,15 +1,18 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { ColorRing } from 'react-loader-spinner'
 import { useDispatch } from 'react-redux';
-import { addPicture } from '../features/catsSlice';
+import { addPicture, deletePicture } from '../features/catsSlice';
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+
 
 export const CatCard = ({ pic }) => {
     const [loaded, setLoaded] = useState(false);
+    const [favorite, setFavorite] = useState(false)
     const dispatch = useDispatch();
 
     const handleAddToFavorites = () => {
-        dispatch(addPicture(pic));
+        favorite ? dispatch(deletePicture(pic)) : dispatch(addPicture(pic)) ;
+        setFavorite((state) => !state);
     };
 
     const handleLoaded = () => {
@@ -22,13 +25,14 @@ export const CatCard = ({ pic }) => {
     }
 
     return (
-        <li className="card" onClick={handleAddToFavorites}>
+        <li className="card">
             <img 
                 src={pic.url} 
                 alt={pic.tags ? pic.tags.join(", ") : 'Cat image'} 
                 onLoad={handleLoaded} 
                 style={{ display: loaded ? 'block' : 'none' }} 
             />
+            <span className={`favorites-heart ${favorite ? 'active' : ''}`} onClick={handleAddToFavorites}>{favorite? <MdFavorite /> : <MdFavoriteBorder/>}</span>
             {!loaded && 
             <ColorRing
             visible={true}
