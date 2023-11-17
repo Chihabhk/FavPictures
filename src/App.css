@@ -4,17 +4,9 @@
   padding: 0;
 }
 
-html {
-  height: 100%;
-}
-
 body {
-  height: 100%;
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(0deg, hsl(339, 100%, 55%) 0%, hsl(187, 100%, 6%) 100%);
-}
-body div#root {
-  height: 100%;
 }
 body div#root header {
   padding: 0.7rem;
@@ -91,6 +83,9 @@ body div#root > div.main ul.fotos-container {
   list-style: none;
 }
 body div#root > div.main ul.fotos-container > li.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 18vmax;
   position: relative;
@@ -125,7 +120,7 @@ body div#root > div.main ul.fotos-container > li.card > img {
   object-position: center;
   z-index: 0;
 }
-body div#root > div.main ul.fotos-container > li.card > span.favorites-heart {
+body div#root > div.main ul.fotos-container > li.card > button.favorite-heart {
   position: absolute;
   bottom: 0rem;
   right: 0.5rem;
@@ -133,14 +128,53 @@ body div#root > div.main ul.fotos-container > li.card > span.favorites-heart {
   scale: 1.2;
   cursor: pointer;
   transition: all 0.4s ease;
-  z-index: 2;
   opacity: 0;
+  background-color: transparent;
+  border: none;
 }
-body div#root > div.main ul.fotos-container > li.card > span.favorites-heart.active {
+body div#root > div.main ul.fotos-container > li.card > button.favorite-heart.active {
   opacity: 1;
 }
-body div#root > div.main ul.fotos-container > li.card:hover > span.favorites-heart {
+body div#root > div.main ul.fotos-container > li.card:hover > button.favorite-heart {
   opacity: 1;
+}
+body div#root > div.main > div.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+body div#root > div.main > div.modal > div.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+body div#root > div.main > div.modal > div.modal-content > h2 {
+  color: #000;
+}
+body div#root > div.main > div.modal > div.modal-content > p {
+  color: #333;
+}
+body div#root > div.main > div.modal > div.modal-content > img {
+  width: 100%;
+  height: auto;
+}
+body div#root > div.main > div.modal > div.modal-content > span.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+body div#root > div.main > div.modal > div.modal-content > span.close:hover, body div#root > div.main > div.modal > div.modal-content > span.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 body div#root > div.main > button {
   bottom: 0;

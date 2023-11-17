@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux';
 import { addPicture, deletePicture } from '../features/catsSlice';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 
-
-export const CatCard = ({ pic }) => {
+export const CatCard = ({ pic, onClick }) => {
     const [loaded, setLoaded] = useState(false);
     const [favorite, setFavorite] = useState(false)
+
     const dispatch = useDispatch();
 
     const handleAddToFavorites = () => {
@@ -25,14 +25,16 @@ export const CatCard = ({ pic }) => {
     }
 
     return (
+        <>
         <li className="card">
             <img 
                 src={pic.url} 
-                alt={pic.tags ? pic.tags.join(", ") : 'Cat image'} 
+                alt={pic.breeds[0].name ? pic.breeds[0].name : 'Cat image'} 
                 onLoad={handleLoaded} 
+                onClick={onClick}
                 style={{ display: loaded ? 'block' : 'none' }} 
             />
-            <span className={`favorites-heart ${favorite ? 'active' : ''}`} onClick={handleAddToFavorites}>{favorite? <MdFavorite style={{ height: '1.2rem', width: '1.2rem' }} /> : <MdFavoriteBorder style={{ height: '1.2rem', width: '1.2rem' }}/>}</span>
+            <button className={`favorite-heart ${favorite ? 'active' : ''}`} onClick={handleAddToFavorites}>{favorite? <MdFavorite style={{ height: '1.2rem', width: '1.2rem' }} /> : <MdFavoriteBorder style={{ height: '1.2rem', width: '1.2rem' }}/>}</button>
             {!loaded && 
             <ColorRing
             visible={true}
@@ -42,7 +44,8 @@ export const CatCard = ({ pic }) => {
             wrapperStyle={{}}
             wrapperClass="blocks-wrapper"
             colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-          />}
+            />}
         </li>
+    </>
     );
 };
