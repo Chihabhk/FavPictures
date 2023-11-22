@@ -33,16 +33,31 @@ export const catsSlice = createSlice({
     initialState: {
         images: [],
         favorites: [],
+        currentPage: 0,
         isLoading: false,
+        isFavoritesPage: false,
+        isModalOpen: false,
+        selectedCat: null,
     },
     reducers: {
-        addPicture(state, action) {
+        addFavorite: (state, action) => {
             state.favorites.push(action.payload);
         },
-        deletePicture(state, action) {
+        removeFavorite: (state, action) => {
             state.favorites = state.favorites.filter(
-                (picture) => picture.id !== action.payload.id
+                (favorite) => favorite.id !== action.payload.id
             );
+        },
+        setFavoritesPage(state, action) {
+            state.isFavoritesPage = action.payload;
+        },
+        setModalOpen(state, action) {
+            state.isModalOpen = action.payload.state;
+            state.selectedCat = action.payload.selectedCat;
+        },
+        exploreMore(state, action) {
+            state.isLoading = true;
+            state.currentPage += 1;
         },
     },
     extraReducers: (builder) => {
@@ -51,23 +66,24 @@ export const catsSlice = createSlice({
         });
         builder.addCase(getPicturesAsync.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.images = [...state.images, ...action.payload.images].reduce(
-                (uniquePicArray, pic) => {
-                    const currentId = pic.id;
-                    if (
-                        currentId &&
-                        !uniquePicArray.find((pic) => pic.id === currentId)
-                    ) {
-                        uniquePicArray.push(pic);
-                    }
-                    return uniquePicArray;
-                },
-                []
-            );
+            const imagesMap = state.images
+                .concat(action.payload.images)
+                .reduce((map, pic) => {
+                    map[pic.id] = pic;
+                    return map;
+                }, {});
+
+            state.images = Object.values(imagesMap);
         });
     },
 });
 
-export const { addPicture, deletePicture } = catsSlice.actions;
+export const {
+    addFavorite,
+    removeFavorite,
+    exploreMore,
+    setFavoritesPage,
+    setModalOpen,
+} = catsSlice.actions;
 
 export default catsSlice.reducer;

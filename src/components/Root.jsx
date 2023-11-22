@@ -1,9 +1,15 @@
-import { CatContainer } from "./CatContainer";
-import { FavoritesCats } from "./FavoritesCats";
+import { useDispatch, useSelector } from "react-redux";
 import { MdFavoriteBorder } from "react-icons/md";
-
+import { setFavoritesPage } from "../features/catsSlice";
+import { CatContainer } from "./CatContainer";
 
 export const Root = () => {
+    const dispatch = useDispatch();
+    const { isFavoritesPage } = useSelector((state) => state.cats);
+
+    const handleOpenFavorites = () => {
+        dispatch(setFavoritesPage(!isFavoritesPage));
+    };
     return (
         <>
             <header>
@@ -11,16 +17,20 @@ export const Root = () => {
                     <h1>Meow Magnet</h1>
                     <p>A place to share your favorite cat photos.</p>
                 </div>
-                <div className="favorites-icon">
-                    <span><MdFavoriteBorder /></span>
-                    <span><MdFavoriteBorder /></span>
-                    <span><MdFavoriteBorder /></span>
+                <div className="favorites-icon" onClick={handleOpenFavorites}>
+                    <span>
+                        <MdFavoriteBorder />
+                    </span>
+                    <span>
+                        <MdFavoriteBorder />
+                    </span>
+                    <span>
+                        <MdFavoriteBorder />
+                    </span>
                     <span className="favorites-label">Favorites</span>
                 </div>
-            </header>   
-            <CatContainer>
-                <FavoritesCats></FavoritesCats>
-            </CatContainer>
+            </header>
+            <CatContainer />
         </>
     );
-}
+};

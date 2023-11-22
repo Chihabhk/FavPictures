@@ -8,6 +8,11 @@ body {
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(0deg, hsl(339, 100%, 55%) 0%, hsl(187, 100%, 6%) 100%);
 }
+body div#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 body div#root header {
   padding: 0.7rem;
   position: sticky;
@@ -125,22 +130,27 @@ body div#root > div.main ul.fotos-container > li.card > button.favorite-heart {
   bottom: 0rem;
   right: 0.5rem;
   color: #d71a5e;
-  scale: 1.2;
   cursor: pointer;
   transition: all 0.4s ease;
   opacity: 0;
   background-color: transparent;
   border: none;
+  outline: none;
+  z-index: 2;
 }
 body div#root > div.main ul.fotos-container > li.card > button.favorite-heart.active {
   opacity: 1;
+}
+body div#root > div.main ul.fotos-container > li.card > button.favorite-heart > svg {
+  height: 1.25rem;
+  width: 1.25rem;
 }
 body div#root > div.main ul.fotos-container > li.card:hover > button.favorite-heart {
   opacity: 1;
 }
 body div#root > div.main > div.modal {
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;

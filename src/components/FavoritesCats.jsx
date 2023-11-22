@@ -1,16 +1,26 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import {CatCard} from './CatCard';
+import { useSelector } from "react-redux";
+import { CatCard } from "./CatCard";
 
 export const FavoritesCats = () => {
-    const favorites = useSelector((state) => state.cats.favorites);
+    const { favorites } = useSelector((state) => state.cats);
 
+    const handleOnClick = () => {
+        console.log("clicked");
+    };
     return (
-        <div className='favorites'>
-            {favorites.map((picture) => (
-                <CatCard key={picture.id} picture={picture} />
-            ))}
-        </div>
+        <ul className="fotos-container">
+            {favorites &&
+                favorites.map((picture) => {
+                    return (
+                        picture && (
+                            <CatCard
+                                key={picture.id}
+                                cat={picture}
+                                onClick={handleOnClick}
+                            />
+                        )
+                    );
+                })}
+        </ul>
     );
 };
-
