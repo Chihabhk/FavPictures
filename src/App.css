@@ -144,8 +144,10 @@ body div#root > div.main ul.fotos-container > li.card > button.favorite-heart {
   outline: none;
   z-index: 2;
 }
-body div#root > div.main ul.fotos-container > li.card > button.favorite-heart.active {
-  opacity: 1;
+@media (max-width: 768px), active {
+  body div#root > div.main ul.fotos-container > li.card > button.favorite-heart {
+    opacity: 1;
+  }
 }
 body div#root > div.main ul.fotos-container > li.card > button.favorite-heart > svg {
   width: 2.5em;

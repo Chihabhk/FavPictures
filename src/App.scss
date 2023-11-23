@@ -162,7 +162,7 @@ body {
                         outline: none;
                         z-index: 2;
 
-                        &.active {
+                        @media (max-width: 768px), active {
                             opacity: 1;
                         }
                         > svg {
