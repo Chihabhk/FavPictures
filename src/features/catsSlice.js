@@ -11,7 +11,7 @@ export const getPicturesAsync = createAsyncThunk(
             headers.append("x-api-key", API_KEY);
 
             let params = new URLSearchParams();
-            params.append("limit", 15);
+            params.append("limit", 20);
             params.append("page", page);
             params.append("has_breeds", 1);
 
