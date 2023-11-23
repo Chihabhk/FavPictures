@@ -48,11 +48,7 @@ export const CatCard = ({ cat }) => {
                 <button
                     className={`favorite-heart ${isFavorite ? "active" : ""}`}
                     onClick={handleAddToFavorites}>
-                    {isFavorite ? (
-                        <MdFavorite className="icon-size" />
-                    ) : (
-                        <MdFavoriteBorder className="icon-size" />
-                    )}
+                    {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
                 </button>
                 {!loaded && (
                     <ColorRing

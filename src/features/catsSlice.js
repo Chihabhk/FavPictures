@@ -5,9 +5,8 @@ export const getPicturesAsync = createAsyncThunk(
     async ({ page }) => {
         try {
             const API_KEY = process.env.REACT_APP_API_KEY;
-            const baseURL = new URL(
-                "https://api.thecatapi.com/v1/images/search/"
-            );
+            const API_URL = process.env.REACT_APP_API_URL;
+            const baseURL = new URL(API_URL);
             let headers = new Headers();
             headers.append("x-api-key", API_KEY);
 
