@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/FavPictures/static/css/main.a6b2974b.css",
+    "main.js": "/FavPictures/static/js/main.9acb4071.js",
+    "index.html": "/FavPictures/index.html",
+    "main.a6b2974b.css.map": "/FavPictures/static/css/main.a6b2974b.css.map",
+    "main.9acb4071.js.map": "/FavPictures/static/js/main.9acb4071.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a6b2974b.css",
+    "static/js/main.9acb4071.js"
+  ]
+}
