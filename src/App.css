@@ -43,23 +43,38 @@ body div#root header > div.favorites-icon {
   scale: 1.5;
   color: #d71a5e;
   align-self: center;
-  position: relative;
   top: -4px;
+  cursor: pointer;
+  transition: all 120ms ease-out;
+  user-select: none;
+}
+@keyframes flash {
+  0%, 100% {
+    color: transparent;
+    border-radius: 12px;
+    text-shadow: white;
+  }
+  50% {
+    color: #aaa;
+  }
+}
+body div#root header > div.favorites-icon:active {
+  animation: flash 0.5s;
+}
+body div#root header > div.favorites-icon > span {
   display: flex;
   justify-content: center;
-  cursor: pointer;
 }
-body div#root header > div.favorites-icon > span:nth-child(1) {
+body div#root header > div.favorites-icon > span > span:nth-child(1) {
   transform: rotate(-32deg) translate(10px, 9px);
 }
-body div#root header > div.favorites-icon > span:nth-child(2) {
+body div#root header > div.favorites-icon > span > span:nth-child(2) {
   transform: rotate(0deg) translate(0px, 1.9px);
 }
-body div#root header > div.favorites-icon > span:nth-child(3) {
+body div#root header > div.favorites-icon > span > span:nth-child(3) {
   transform: rotate(32deg) translate(-10px, 9px);
 }
 body div#root header > div.favorites-icon > span.favorites-label {
-  position: absolute;
   top: 15px;
   font-size: x-small;
 }
@@ -78,7 +93,8 @@ body div#root > div.main > div.loading {
 }
 body div#root > div.main > div.favorites {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   padding: 1rem;
@@ -94,6 +110,7 @@ body div#root > div.main ul.fotos-container {
   font-size: 3rem;
 }
 body div#root > div.main ul.fotos-container > li.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,6 +134,7 @@ body div#root > div.main ul.fotos-container > li.card::after {
 }
 body div#root > div.main ul.fotos-container > li.card:hover {
   transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 body div#root > div.main ul.fotos-container > li.card:hover::after {
   width: 40%;
@@ -132,19 +150,21 @@ body div#root > div.main ul.fotos-container > li.card > img {
 }
 body div#root > div.main ul.fotos-container > li.card > button.favorite-heart {
   position: absolute;
-  font-size: 20px;
   bottom: 0rem;
   right: 0.5rem;
   color: #d71a5e;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.2s ease;
   opacity: 0;
   background-color: transparent;
   border: none;
   outline: none;
   z-index: 2;
 }
-@media (max-width: 768px), active {
+body div#root > div.main ul.fotos-container > li.card > button.favorite-heart.active {
+  opacity: 1;
+}
+@media (max-width: 425px) {
   body div#root > div.main ul.fotos-container > li.card > button.favorite-heart {
     opacity: 1;
   }
@@ -153,8 +173,9 @@ body div#root > div.main ul.fotos-container > li.card > button.favorite-heart > 
   width: 2.5em;
   height: auto;
 }
-body div#root > div.main ul.fotos-container > li.card:hover > button.favorite-heart {
+body div#root > div.main ul.fotos-container > li.card:hover > button.favorite-heart, body div#root > div.main ul.fotos-container > li.card:hover.active {
   opacity: 1;
+  transform: scale(1.1);
 }
 body div#root > div.main > div.modal {
   position: fixed;

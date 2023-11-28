@@ -19,13 +19,15 @@ export const Root = () => {
                 </div>
                 <div className="favorites-icon" onClick={handleOpenFavorites}>
                     <span>
-                        <MdFavoriteBorder />
-                    </span>
-                    <span>
-                        <MdFavoriteBorder />
-                    </span>
-                    <span>
-                        <MdFavoriteBorder />
+                        <span>
+                            <MdFavoriteBorder />
+                        </span>
+                        <span>
+                            <MdFavoriteBorder />
+                        </span>
+                        <span>
+                            <MdFavoriteBorder />
+                        </span>
                     </span>
                     <span className="favorites-label">Favorites</span>
                 </div>
