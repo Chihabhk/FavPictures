@@ -10,10 +10,20 @@ export const Root = () => {
     const handleOpenFavorites = () => {
         dispatch(setFavoritesPage(!isFavoritesPage));
     };
+    const scrollToTop = () => {
+        window.scroll({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
     return (
         <>
             <header>
-                <div className="logo">
+                <div
+                    className="logo"
+                    onClick={
+                        isFavoritesPage ? handleOpenFavorites : scrollToTop
+                    }>
                     <h1>Meow Magnet</h1>
                     <p>A place to share your favorite cat photos.</p>
                 </div>

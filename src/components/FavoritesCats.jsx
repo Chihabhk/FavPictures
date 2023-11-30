@@ -1,30 +1,39 @@
 import { useDispatch, useSelector } from "react-redux";
-import { CatCard } from "./CatCard";
 import { setFavoritesPage } from "../features/catsSlice";
+import { CatCard } from "./CatCard";
 
 export const FavoritesCats = () => {
-    const { images, favorites, isFavoritesPage } = useSelector(
-        (state) => state.cats
-    );
+    const { favorites } = useSelector((state) => state.cats);
     const dispatch = useDispatch();
-    const randomCat = images[Math.floor(Math.random() * images.length)];
+    const exploreMore = "FavPictures/assets/exploreMore.jpg";
 
     const handleOnClick = () => {
         dispatch(setFavoritesPage());
     };
-    return (
+
+    return favorites.length > 0 ? (
         <ul className="fotos-container">
-            {favorites.length > 0 ? (
-                favorites.map((picture) => {
-                    return (
-                        picture && <CatCard key={picture.id} cat={picture} />
-                    );
-                })
-            ) : (
-                <div className="no-favorites" onClick={handleOnClick}>
-                    explore more
-                </div>
-            )}
+            {favorites.map((picture) => {
+                return picture && <CatCard key={picture.id} cat={picture} />;
+            })}
+            <div className="img-card">
+                <img
+                    src={exploreMore}
+                    alt="Explore more cat pictures"
+                    onClick={handleOnClick}
+                />
+            </div>
         </ul>
+    ) : (
+        <div className="no-favorites">
+            <h2>
+                You don't have any <span>favorites</span> yet!
+            </h2>
+            <div className="exploreMore-card">
+                <img src={exploreMore} alt="Explore more cat pictures" />
+
+                <span onClick={handleOnClick}>Explore More...</span>
+            </div>
+        </div>
     );
 };
