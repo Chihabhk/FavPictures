@@ -5,7 +5,7 @@ import { CatCard } from "./CatCard";
 export const FavoritesCats = () => {
     const { favorites } = useSelector((state) => state.cats);
     const dispatch = useDispatch();
-    const exploreMore = "FavPictures/assets/exploreMore.jpg";
+    const exploreMore = "assets/exploreMore.jpg";
 
     const handleOnClick = () => {
         dispatch(setFavoritesPage());

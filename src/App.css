@@ -52,6 +52,7 @@ body div#root header > div.logo > p {
 }
 body div#root header > div.favorites-icon {
   scale: 1.5;
+  padding: 2px;
   color: #ff5722;
   align-self: center;
   margin-top: -4px;
@@ -61,12 +62,14 @@ body div#root header > div.favorites-icon {
   position: relative;
 }
 body div#root header > div.favorites-icon:hover {
-  opacity: 0.9;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   animation: flash 1s infinite;
+  transform: translate(0, 1px);
 }
 body div#root header > div.favorites-icon:active {
-  animation: flash 0.5s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: flash 1s infinite;
+  transform: translate(0, 1px);
 }
 body div#root header > div.favorites-icon > span {
   display: flex;
