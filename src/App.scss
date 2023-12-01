@@ -53,7 +53,7 @@ body {
 
             > div.favorites-icon {
                 scale: 1.5;
-                padding: 2px;
+                padding: 3px 5px;
                 color: #ff5722;
                 align-self: center;
                 margin-top: -4px;
@@ -62,7 +62,7 @@ body {
                 user-select: none;
                 position: relative;
                 &:hover {
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
                     animation: flash 1s infinite;
                     transform: translate(0, 1px);
                 }

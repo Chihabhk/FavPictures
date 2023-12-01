@@ -5,7 +5,9 @@ import { CatCard } from "./CatCard";
 export const FavoritesCats = () => {
     const { favorites } = useSelector((state) => state.cats);
     const dispatch = useDispatch();
-    const exploreMore = "assets/exploreMore.jpg";
+
+    const basePath = process.env.REACT_APP_BASE_PATH || "";
+    const catUrl = `${basePath}/assets/exploreMore.jpg`;
 
     const handleOnClick = () => {
         dispatch(setFavoritesPage());
@@ -18,7 +20,7 @@ export const FavoritesCats = () => {
             })}
             <div className="img-card">
                 <img
-                    src={exploreMore}
+                    src={catUrl}
                     alt="Explore more cat pictures"
                     onClick={handleOnClick}
                 />
@@ -30,7 +32,7 @@ export const FavoritesCats = () => {
                 You don't have any <span>favorites</span> yet!
             </h2>
             <div className="exploreMore-card">
-                <img src={exploreMore} alt="Explore more cat pictures" />
+                <img src={catUrl} alt="Explore more cat pictures" />
 
                 <span onClick={handleOnClick}>Explore More...</span>
             </div>
