@@ -101,6 +101,67 @@ body div#root > div.main {
 body div#root > div.main > div.loading {
   display: flex;
 }
+body div#root > div.main > div.input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+body div#root > div.main > div.input-wrapper > input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-shadow: none;
+}
+body div#root > div.main > div.input-wrapper > input input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+body div#root > div.main > div.input-wrapper > span.suggestion-text {
+  position: absolute;
+  left: 15px;
+  font-size: 16px;
+  top: 10px;
+  color: #999;
+  pointer-events: none;
+}
+body div#root > div.main > div.input-wrapper > ul.suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+body div#root > div.main > div.input-wrapper > ul.suggestions-list > li.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+body div#root > div.main > div.input-wrapper > ul.suggestions-list > li.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+@media (max-width: 768px) {
+  body div#root > div.main > div.input-wrapper {
+    width: 90%;
+  }
+  body div#root > div.main > div.input-wrapper > input {
+    font-size: 0.9rem;
+  }
+}
 body div#root > div.main > ul.fotos-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -121,25 +182,9 @@ body div#root > div.main > ul.fotos-container > li.card {
   transition: all 300ms ease;
   cursor: pointer;
 }
-body div#root > div.main > ul.fotos-container > li.card::after {
-  content: "";
-  border-radius: 0.8rem;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  background: linear-gradient(to top left, rgba(0, 0, 0, 0.5) 30%, transparent 50%);
-  z-index: 1;
-  transition: all 0.3s ease-out;
-}
 body div#root > div.main > ul.fotos-container > li.card:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-}
-body div#root > div.main > ul.fotos-container > li.card:hover::after {
-  width: 50%;
-  height: 50%;
 }
 body div#root > div.main > ul.fotos-container > li.card > img {
   border-radius: 0.8rem;
@@ -151,8 +196,8 @@ body div#root > div.main > ul.fotos-container > li.card > img {
 }
 body div#root > div.main > ul.fotos-container > li.card > button.favorite-heart {
   position: absolute;
-  bottom: 0rem;
-  right: 0.5rem;
+  bottom: 0;
+  right: 0;
   color: #ff5722;
   cursor: pointer;
   transition: opacity 0.4s ease, all 0.3s ease-out;
@@ -161,6 +206,9 @@ body div#root > div.main > ul.fotos-container > li.card > button.favorite-heart 
   border: none;
   outline: none;
   z-index: 2;
+  background: linear-gradient(to top left, rgba(0, 0, 0, 0.5) 30%, transparent 55%);
+  padding: 11px;
+  border-radius: 0.8rem 0;
 }
 body div#root > div.main > ul.fotos-container > li.card > button.favorite-heart.active {
   opacity: 1;
@@ -181,7 +229,7 @@ body div#root > div.main > ul.fotos-container > li.card:hover > button.favorite-
   opacity: 1;
   transform: scale(1.1);
 }
-body div#root > div.main > ul.fotos-container > div.img-card {
+body div#root > div.main > ul.fotos-container > div.exploreMore-card {
   position: relative;
   max-width: 18em;
   display: flex;
@@ -190,12 +238,12 @@ body div#root > div.main > ul.fotos-container > div.img-card {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-body div#root > div.main > ul.fotos-container > div.img-card > img {
+body div#root > div.main > ul.fotos-container > div.exploreMore-card > img {
   max-width: 100%;
   height: auto;
   border-radius: 4em;
 }
-body div#root > div.main > ul.fotos-container > div.img-card > span {
+body div#root > div.main > ul.fotos-container > div.exploreMore-card > span {
   font-size: 0.5em;
   opacity: 0;
   position: absolute;
@@ -207,16 +255,16 @@ body div#root > div.main > ul.fotos-container > div.img-card > span {
   transition: all 0.3s ease;
 }
 @media screen and (max-width: 768px) {
-  body div#root > div.main > ul.fotos-container > div.img-card > span {
+  body div#root > div.main > ul.fotos-container > div.exploreMore-card > span {
     font-size: 1.4em;
     opacity: 1;
     transform: translateY(2.5em);
   }
 }
-body div#root > div.main > ul.fotos-container > div.img-card:hover {
+body div#root > div.main > ul.fotos-container > div.exploreMore-card:hover {
   scale: 1.1;
 }
-body div#root > div.main > ul.fotos-container > div.img-card:hover > span {
+body div#root > div.main > ul.fotos-container > div.exploreMore-card:hover > span {
   font-size: 1.4em;
   opacity: 1;
   transform: translateY(2.5em);

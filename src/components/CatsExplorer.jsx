@@ -2,6 +2,7 @@ import { CatCard } from "./CatCard";
 import { useDispatch, useSelector } from "react-redux";
 import { exploreMore } from "../features/catsSlice";
 import { Loader } from "./Loader";
+import { SearchSuggestions } from "./SearchSuggestions";
 
 export const CatsExplorer = () => {
     const { images, isLoading } = useSelector((state) => state.cats);
@@ -13,6 +14,7 @@ export const CatsExplorer = () => {
 
     return (
         <>
+            <SearchSuggestions />
             <ul className="fotos-container">
                 {images.map((picture) => {
                     return <CatCard cat={picture} key={picture.id} />;

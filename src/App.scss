@@ -110,6 +110,75 @@ body {
                 display: flex;
             }
 
+            > div.input-wrapper {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 600px;
+                margin: 0;
+                margin-bottom: 1rem;
+
+                > input {
+                    width: 100%;
+                    padding: 10px;
+                    font-size: 1rem;
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    outline: none;
+                    box-shadow: none;
+
+                    input:focus {
+                        border-color: #007bff;
+                        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                    }
+                }
+
+                > span.suggestion-text {
+                    position: absolute;
+                    left: 15px;
+                    font-size: 16px;
+                    top: 10px;
+                    color: #999;
+                    pointer-events: none;
+                }
+
+                > ul.suggestions-list {
+                    list-style: none;
+                    padding: 0;
+                    margin-top: 5px;
+                    background: white;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    max-height: 150px;
+                    overflow-y: auto;
+                    width: 100%;
+                    opacity: 0.6;
+                    transition: opacity 0.2s;
+
+                    > li.suggestion-item {
+                        padding: 10px;
+                        cursor: pointer;
+                        transition: background-color 0.2s;
+
+                        &:hover {
+                            background-color: #f0f0f0;
+                        }
+                    }
+                }
+            }
+            @media (max-width: 768px) {
+                > div.input-wrapper {
+                    width: 90%;
+
+                    > input {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+
             > ul.fotos-container {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -130,31 +199,9 @@ body {
                     transition: all 300ms ease;
                     cursor: pointer;
 
-                    &::after {
-                        content: "";
-                        border-radius: 0.8rem;
-                        position: absolute;
-                        bottom: 0;
-                        right: 0;
-                        width: 0;
-                        height: 0;
-                        background: linear-gradient(
-                            to top left,
-                            rgba(0, 0, 0, 0.5) 30%,
-                            transparent 50%
-                        );
-                        z-index: 1;
-                        transition: all 0.3s ease-out;
-                    }
-
                     &:hover {
                         transform: scale(1.05);
                         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-
-                        &::after {
-                            width: 50%;
-                            height: 50%;
-                        }
                     }
 
                     > img {
@@ -168,8 +215,8 @@ body {
 
                     > button.favorite-heart {
                         position: absolute;
-                        bottom: 0rem;
-                        right: 0.5rem;
+                        bottom: 0;
+                        right: 0;
                         color: #ff5722;
                         cursor: pointer;
                         transition: opacity 0.4s ease, all 0.3s ease-out;
@@ -178,7 +225,13 @@ body {
                         border: none;
                         outline: none;
                         z-index: 2;
-
+                        background: linear-gradient(
+                            to top left,
+                            rgba(0, 0, 0, 0.5) 30%,
+                            transparent 55%
+                        );
+                        padding: 11px;
+                        border-radius: 0.8rem 0;
                         &.active {
                             opacity: 1;
                         }
@@ -202,7 +255,7 @@ body {
                         }
                     }
                 }
-                > div.img-card {
+                > div.exploreMore-card {
                     position: relative;
                     max-width: 18em;
                     display: flex;

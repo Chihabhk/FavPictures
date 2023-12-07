@@ -18,7 +18,7 @@ export const FavoritesCats = () => {
             {favorites.map((picture) => {
                 return picture && <CatCard key={picture.id} cat={picture} />;
             })}
-            <div className="img-card">
+            <div className="exploreMore-card">
                 <img
                     src={catUrl}
                     alt="Explore more cat pictures"
